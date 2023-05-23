@@ -1,7 +1,6 @@
 package org.example.theadLocal;
 
 import org.example.excutor.ThreadUtil;
-import org.omg.PortableInterceptor.LOCATION_FORWARD;
 
 import java.util.HashMap;
 import java.util.Map;
