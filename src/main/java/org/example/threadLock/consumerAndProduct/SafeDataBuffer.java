@@ -4,13 +4,20 @@ import org.example.excutor.ThreadUtil;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
-//数据缓冲区线程不安全版
-public class NotSafeDataBuffer<T> {
+/**
+ * 数据缓冲区 安全版本
+ */
+public class SafeDataBuffer<T> {
+
     public  static  final  int MAX_AMOUNT=10;
 
-    private List<T> dataList =new LinkedList<>();
+    private BlockingQueue<T> dataList =new LinkedBlockingQueue<>();
 
     //保存数量
     private AtomicInteger amount= new AtomicInteger(0);
@@ -37,14 +44,12 @@ public class NotSafeDataBuffer<T> {
             ThreadUtil.PrintTo("队列已空");
             return  null;
         }
-        T element =dataList.remove(0);
+        T element =dataList.remove();
         ThreadUtil.PrintTo(element+"");
-        amount.decrementAndGet();
         //如果数据不一致，就抛出异常
         if (amount.get() != dataList.size()) {
             throw new Exception( amount +"!=" +dataList.size());
         }
         return  element;
     }
-
 }

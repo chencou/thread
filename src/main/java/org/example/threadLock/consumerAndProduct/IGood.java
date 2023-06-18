@@ -18,9 +18,6 @@ public class IGood {
     private String  name;
 
 
-    public  synchronized   IGood productOne(){
-        return new IGood().builder().id(new AtomicInteger(id.getAndIncrement())).name("商品"+id).build();
-    }
     @Tolerate
     public IGood(){}
 }
