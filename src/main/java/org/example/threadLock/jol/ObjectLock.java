@@ -1,6 +1,5 @@
 package org.example.threadLock.jol;
 
-import com.itlgl.java.util.ByteUtils;
 
 /**
  * 对象布局分析
