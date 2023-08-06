@@ -4,7 +4,7 @@ import org.example.excutor.ThreadUtil;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class TestAtomicInter {
+public class TestAtomicInteger {
 
     public static void main(String[] args) {
         int tempValue=0;
